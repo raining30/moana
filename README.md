@@ -17,3 +17,4 @@
  1、前端Nginx配置，实现代理，处理静态资源请求，转发数据请求；
  2、jdbc.properties配置，修改jdbc.properties文件，配置相应的jdbc连接，用户名及密码；
  3、mail.properties配置，修改mail.properties文件，配置相应的发送邮件帐号及密码
+ 4、redis.properties配置，修改redis.properties文件，配置相应的host ip、密码等参数
