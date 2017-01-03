@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.io.rush.dao.PurchaseDao">
+    <resultMap id="purchaseMap" type="lab.io.rush.model.Purchase">
+        <id column="pid" property="pid" jdbcType="INTEGER" />
+        <result column="ucount" property="ucount" jdbcType="VARCHAR" />
+        <result column="fid" property="fid" jdbcType="INTEGER" />
+    </resultMap>
+
+    <select id="selectPurchaseById" parameterType="int" resultMap="purchaseMap">
+        	select * from m_purchase where pid = #{pid}
+    </select>
+    
+    <select id="selectByUcount" parameterType="java.lang.String" resultMap="purchaseMap">
+    		select * from m_purchase where ucount=#{ucount}
+    </select>
+    
+    <insert id="insertPurchase" useGeneratedKeys="true" keyProperty="pid">
+    		insert into m_purchase(ucount, fid) values(#{ucount}, #{fid})
+    </insert>
+    
+    <delete id="delectPurchase" parameterType="int">
+    		delect from m_purchase where pid=#{pid}
+    </delete>
+</mapper>

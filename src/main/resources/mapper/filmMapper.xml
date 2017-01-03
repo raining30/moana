@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.io.rush.dao.FilmDao">
+    <resultMap id="filmMap" type="lab.io.rush.model.Film">
+        <id column="fid" property="fid" jdbcType="INTEGER" />
+        <result column="fname" property="fname" jdbcType="VARCHAR" />
+        <result column="fdirector" property="fdirector" jdbcType="VARCHAR" />
+        <result column="factor" property="factor" jdbcType="VARCHAR" />
+        <result column="fremark" property="fremark" jdbcType="VARCHAR" />
+        <result column="fcount" property="fcount" jdbcType="INTEGER" /> 	
+    </resultMap>
+
+    <select id="selectFilmById" parameterType="int" resultMap="filmMap">
+    		select * from m_film where fid = #{fid}
+    </select>
+    
+    <select id="selectAll" resultMap="filmMap">
+    		select * from m_film 
+    </select>
+    
+    <insert id="insertFilm" useGeneratedKeys="true" keyProperty="fid">
+    		insert into m_film(fname, fdirector, factor, fremark, fcount) 
+    			values(#{fname}, #{fdirector}, #{factor}, #{fremark}, #{fcount})
+    </insert>
+    
+    <update id="updateFilmCount" parameterType="int">
+    		update m_film set fcount=#{fcount} where fid=#{fid}
+    </update>
+    
+    <delete id="delectFilm" parameterType="int">
+    		delete from m_film where fid=#{fid}
+    </delete>
+</mapper>
